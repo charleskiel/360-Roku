@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="ViewPost" extends="Task">
+
+	<script type="text/brightscript" uri="pkg:/components/viewpost.brs" />
+	<script type="text/brightscript" uri="pkg:/components/getData.brs" />
+
+	<interface>
+		<field id="overlay" type="string" value="" alwaysnotify="false"/>
+		<field id="nextOverlay" type="string" value="" alwaysnotify="false"/>
+		<field id="mode" type="string" value="" alwaysnotify="false"/>
+		<field id="nextMode" type="string" value="" alwaysnotify="false"/>
+
+		<field id="streamPlayID" type="string" value="0" alwaysnotify="false"/>
+		<field id="playOK" type="bool" value="false" />
+		<field id="serverEpoch"  type="float" value="0" alwaysnotify="true"/>
+
+		<field id="postTime" type="int" value="0" alwaysnotify="true"/>
+		<field id="status" type="assocarray" value=""  alwaysnotify="true"/>
+		<field id="response" type="string" value=""  alwaysnotify="true"/>
+		<field id="offset" type="int" value="0" alwaysnotify="true"/>
+
+		<field id="totalBandwidth" type="float" value="0" alwaysnotify="true"/>
+		
+		<field id="content" type="array" value="[]" />
+		
+		<field id="segment" type="longInteger" value="0"  alwaysnotify="true"/>
+
+		<field id="segmentStartTime" type="time" />
+		<field id="segmentURL" type="string" />
+		<field id="segmentPath" type="string" />
+		
+		<field id="segmentEpoch" type="longInteger" value="0"  alwaysnotify="true"/>
+		<field id="segmentSequence" type="longInteger" value="0"  alwaysnotify="true"/>
+		<field id="segmentDownloaded" type="longInteger" value="0"  alwaysnotify="true"/>
+		<field id="segmentDownloadedSize" type="float" value="0"  alwaysnotify="true"/>
+		<field id="segmentDownloadDuration" type="float" value="0"  alwaysnotify="true"/>
+		<field id="segmentBitrateBPS" type="int" value="0"  alwaysnotify="true"/>
+		
+		<function name="post" />
+		<function name="playerEpoch" />
+		<function name="SegmentTimer" />
+		<function name="viewTimer" />
+
+
+		<field id="setStreamingSegment" type="assocArray" alwaysNotify="true" />
+		<field id="setDownloadedSegment" type="assocArray" alwaysNotify="true" />
+		<field id="setPlayStartInfo" type="assocArray" alwaysNotify="true" />
+		<field id="setPositionInfo" type="assocArray" alwaysNotify="true" />
+		<field id="setStreamInfo" type="assocArray" alwaysNotify="true" />
+		<field id="setState" type="string" alwaysNotify="true" />
+		<field id="setVideoEvent" type="assocArray" alwaysNotify="true" />
+
+		<function name="timeLeft" />
+	</interface>
+
+</component>
+
+
+
+
+

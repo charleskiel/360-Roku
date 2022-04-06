@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<component name="user" extends="Task">
+<script type="text/brightscript" uri="pkg:/components/getData.brs" />
+
+<interface>
+	<field id="response"  type="string" value="" 
+		    alwaysnotify="true"/>
+	
+	<field id="streamname"  type="string" value="" />
+	<field id="title"  type="string" value="" />
+	<field id="onair"  type="bool" value="false" />
+	<field id="lastupdate"  type="int" value="0"/>
+	<field id="maxviewers"  type="int" value="0"/>
+	<field id="showcurrentviewers"  type="bool" value="false" />
+	<field id="preroll"  type="string" value="" />
+	<field id="prerollurl"  type="string" value="" />
+	<field id="prerollmessage"  type="string" value="" />
+	<field id="PositionNotificationPeriod"  type="string" value="" />
+	<field id="SDBackgroundImageURL"  type="string" value="" />
+	<field id="HDBackgroundImageURL"  type="string" value="" />
+	<field id="SDposterURL"  type="string" value="" />
+	<field id="HDposterURL"  type="string" value="" />
+	<field id="ShortDescriptionLine1"  type="string" value="" />
+	<field id="ShortDescriptionLine2"  type="string" value="" />
+	<field id="streamip"  type="string" value="" />
+	<field id="streamurl"  type="string" value="" />
+	<field id="delay"  type="int" value="0"/>
+	<field id="datetimeupdate"  type="string" value="" 
+		    alwaysnotify="true"/>
+	<field id="serverepoch"  type="int" value="" 
+		    alwaysnotify="true"/>
+		    
+		    
+	<field id="userparams" type="string" value="" />
+		    
+	<field id="regtoken" type="string" value="" alwaysnotify="true"/>
+	<field id="regcode" type="string" value=""  alwaysnotify="true"/>
+	<field id="registrationmessage" type="string" value="" />
+	
+	
+    <function name="post" />
+</interface>
+<script type="text/brightscript" uri="pkg:/components/user.brs" />
+
+</component>

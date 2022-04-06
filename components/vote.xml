@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<component name="Vote" extends="Task">
+
+	<interface>
+		<field id="voteIndex" type="int" value="-1"/>
+		<field id="highlightIndex" type="int" value="0"/>
+		
+		<field id="voteOptions" type="array" value=""/>
+		<field id="enabled" type="bool" value="false"/>
+		<field id="castVote" type = "bool" value="false" />
+		<function name="post" />
+	</interface>
+	<script type="text/brightscript" uri="pkg:/components/vote.brs" />
+
+</component>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<component name="register" extends="Task">
+
+<interface>
+    <field id="regcode" type="int" value="0"/>
+    <field id="index" type="int" value="0"/>
+    <field id="nowpos" type="int" value="0"/>
+    <field id="posttime" type="int" value="0"/>
+    <field id="response" type="string" value=""/>
+    <field id="status" type="string" value=""/>
+    <field id="xml" type="string" value=""/>
+    <field id="overlay" type="string" value=""/>
+    <field id="overlays" type="nodearray" value=""/>
+    <field id="nextoverlay" type="string" value=""/>
+    <field id="nextoverlays" type="array" value=""/>
+    <field id="artist" type="string" value=""/>
+    <field id="title" type="string" value=""/>
+    <field id="contentid" type="string" value=""/>
+    <field id="TRT"  type="float" value="0"/>
+    <field id="streamname" type="string" value="Live"/>
+    <field id="serverEpoch"  type="int" value="0"/>
+    <field id="playerEpoch"  type="int" value="0"/>
+    <field id="contentEpoch" type="int" value="0"/>
+    <field id="contentendEpoch" type="int" value="0"/>
+    <field id="timeleft" type="float" value="0"/>
+    <field id="delay" type="int" value="0"/>
+    <field id="screenmode" type="int" value="0"/>
+    <field id="totalbandwidth" type="float" value="0"/>
+    
+</interface>
+<script type="text/brightscript" uri="pkg:/components/viewpost.brs" />
+
+</component>

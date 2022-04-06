@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="VideoScene" extends="Scene" >
+  <script type="text/brightscript" uri="pkg:/components/videoplayer.brs" />
+  <children >
+	<Video id="VideoPlayer" enableui="false" cgms="3" notificationInterval=".2" />
+	<Poster id="mainOverlay" opacity="1" width="0.0" height="0.0" translation="[0,0]" />
+	
+	<Rectangle color="0x202020cc" width="350" height="720" opacity=".95" translation="[0,0]" />
+	<Rectangle color="0x202020cc" width="1280" height="720" opacity=".75" translation="[350,0]" />
+	 <!-- Loading / Buffering Screen -->
+	<Poster id="tempOverlay" opacity="1" width="1280" height="500" translation="[0,0]" visible="false">
+
+		<Label text="Stay Tuned!" horizAlign="left" vertAlign="top" width="480" height="120" translation="[400,100]" >
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="26" />
+		</Label>
+		<Label 
+			horizAlign="left"
+			vertAlign="top"
+			width="680"
+			height="720"
+			translation="[400,180]" 
+			text="
+			There has been a great deal of work taking place re-working the backend functionality (including translating from VB.net to C#, containerizing services, migrating FROM the cloud, and other things nerds care about). 
+			The hardware requirements prevent me from having a 'development environment' so work couldn't really continue while broadcasting full time, as there were many issues keeping me from running 24/7. 
+			This is to ensure this channel runs the way I want it to before I turn it loose again. 
+			&#xA;
+			Since the changes have been so vast and so many, this channel is out of sync with tbe back-end. The current priority is to make the required changes as soon as one person with a full time job can reasonably do.
+			&#xA;
+			&#xA;
+			See you soon!"
+
+			wrap="true"
+			>
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="18" />
+		</Label>
+		<!-- <Poster id="signature" opacity="1" uri="http://192.168.1.102:5000/roku/theme/signature.png" translation="[700,550]" width="300" height="100" loaddisplaymode="scaletofit" visible="true"/> -->
+
+	</Poster>
+
+	 <!-- Loading / Buffering Screen -->
+	<Poster id="loadingOverlay" opacity="1" width="1280" height="720" translation="[0,0]" visible="true">
+		<Rectangle id="loadingRectangle" color="0x20202020" width="1280" height="720" opacity=".75" translation="[0,0]" />
+		<Rectangle id="loadingRectangle" color="0x40404040" width="1280" height="40" opacity=".75" translation="[0,340]" />
+		<Label id="loadingLabel" text="loading" horizAlign="center" vertAlign="center" width="1280" height="720">
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" />
+		</Label>
+	</Poster>
+
+	
+	<!-- Video Rating and Info Screen -->
+ 	<Poster id="videoInfoOverlay" opacity="0" width="1280" height="720" translation="[0,0]" visible="true">
+		<Rectangle id="rectangle" color="0x000000FF" width="1280" height="720" opacity=".50"	translation="[0,0]" />
+
+		<Label translation="[40,40]" id="videoInfoLabel" text="" width="1280" height="720">
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="18" />
+		</Label>
+		<Label translation="[520,40]" id="loggedInLabel1" text="" width="600" height="100" horizAlign="right">
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" />
+		</Label>
+		<Label translation="[520,60]" id="loggedInLabel2" text="" width="600" height="100" horizAlign="right">
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" />
+		</Label>
+		<Label translation="[520,80]" id="loggedInLabel3" text="" width="600" height="100" horizAlign="right">
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" />
+		</Label>
+		
+		<Rectangle id="avatarBackground" color="0x000000FF" width="50" height="50" opacity=".50"	translation="[1150,40]" />
+		<Poster id="avatar" opacity="1" uri="" translation="[1150,40]" width="50" height="50" visible="true"/>
+
+		<Poster id="starImage" opacity="1" uri="http://192.168.1.102:5000/roku/theme/5star.png" translation="[40,60]" width="70" height="14" visible="true"/>
+		<Rectangle id="badAvergeLine" color="0xFF0000FF" width="70" height="2" opacity="1" translation="[40,75]" />
+		<Rectangle id="averageRatingLine" color="0x00FF00FF" width="70" height="2" opacity="1" translation="[40,75]" />
+	</Poster>
+ 	
+	<!-- Registration Screen -->
+ 	<Poster id="registrationScreen" opacity="1" width="1280" height="720" translation="[0,0]" visible="false">
+		<Rectangle id="rectangle" color="0x000000FF" width="1280" height="720" opacity=".75"	translation="[0,0]" />
+		<Rectangle id="regtokenBackground" color="0x000000FF" width="1280" height="600" opacity=".75" translation="[0,60]" />
+		<SimpleLabel translation="[640,360]" id="regcode" text="      " horizOrigin="center" vertOrigin="center" fonturi="tmp:/fonts/COURBD.TTF" fontsize="300" />
+		<SimpleLabel translation="[110,200]" id="registrationMessage" fonturi="tmp:/fonts/COURBD.TTF" fontsize="28" />
+	</Poster>
+ 	
+	<!-- Vote Overlay -->
+	<Poster id="voteOverlay" opacity="1" width="1280" height="720" translation="[0,0]" visible="false">
+		<Poster id="voteOverlay0" opacity="1" width="260" height="30" translation="[895,130]" visible="true">
+			<Rectangle id="rectangle"	translation="[0,0]" color="0x000000FF" width="260" height="30" opacity=".75" />
+			<Rectangle id="voteIndicator0"	translation="[0,20]" color="0x524b61FF" width="50" height="4" opacity=".75" />
+			<ScrollingLabel translation="[5,3]" id="voteTextA0" text="[Choice 1]" maxWidth="250" scrollSpeed="30"> 
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" /></ScrollingLabel>
+			<SimpleLabel translation="[255,23]" id="voteTextB0" text="24 %" horizOrigin="right" vertOrigin="center" fonturi="tmp:/fonts/COURBD.TTF" fontsize="10" />
+		</Poster>
+		<Poster id="voteOverlay1" opacity="1" width="260" height="30" translation="[895,310]" visible="true">
+			<Rectangle id="rectangle"	translation="[0,0]" color="0x000000FF" width="260" height="30" opacity=".75" />
+			<Rectangle id="voteIndicator1"	translation="[0,20]" color="0x524b61FF" width="50" height="4" opacity=".75" />
+			<ScrollingLabel translation="[5,3]" id="voteTextA1" text="[Choice 2]" maxWidth="250" scrollSpeed="30"> 
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" /></ScrollingLabel>
+			<SimpleLabel translation="[255,23]" id="voteTextB1" text="66 %" horizOrigin="right" vertOrigin="center" fonturi="tmp:/fonts/COURBD.TTF" fontsize="10" />
+		</Poster>
+		<Poster id="voteOverlay2" opacity="1" width="260" height="30" translation="[895,490]" visible="true">
+			<Rectangle id="rectangle"	translation="[0,0]" color="0x000000FF" width="260" height="30" opacity=".75" />
+			<Rectangle id="voteIndicator2"	translation="[0,20]" color="0x524b61FF" width="50" height="4" opacity=".75" />
+			<ScrollingLabel translation="[5,3]" id="voteTextA2" text="[Choice 3]" maxWidth="250" scrollSpeed="30"> 
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" /></ScrollingLabel>
+			<SimpleLabel translation="[255,23]" id="voteTextB2" text="12 %" horizOrigin="right" vertOrigin="center" fonturi="tmp:/fonts/COURBD.TTF" fontsize="10" />
+		</Poster>
+	</Poster>
+ 	
+ 	<!--  Debug Screen -->
+ 	<Poster id="debugOverlay" opacity="1" width="1280" height="720" translation="[0,0]" visible="false">	
+		<Label id="debugLabel" linespacing=".01" width="900" height="1000" text="Debug........." horizAlign="left" vertAlign="top" wrap="true" translation="[30,20]"  visible="true" >
+			<Font role="font" uri="tmp:/fonts/COURBD.TTF" size="12" />
+		</Label>
+	</Poster>
+ 	
+	<Timer id="viewPostTick" repeat="true" duration="5" />
+	<Timer id="highResTick" repeat="true" duration=".012" />
+	<Timer id="statusTick" repeat="true" duration="18" />
+	<Timer id="voteTick" repeat="true" duration="3" />
+	
+	<Animation id="loadingOverlayFadeIn"
+		duration="2.5"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[0.0, 1.0]"
+			fieldToInterp="loadingOverlay.opacity"   />
+	</Animation>
+	<Animation id="loadingOverlayFadeOut"
+		duration="2.5"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[1.0, 0.0]"
+			fieldToInterp="loadingOverlay.opacity"   />
+	</Animation>
+	
+	<Animation id="overlayFadeIn"
+		duration="4"
+		repeat="false"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[0.0, 1.0]"
+			fieldToInterp="mainOverlay.opacity"   />
+	</Animation>
+	<Animation id="overlayFadeOut"
+		duration="4"
+		repeat="false"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[1.0, 0.0]"
+			fieldToInterp="mainOverlay.opacity"   />
+	</Animation>
+	
+	
+	
+	
+	<ParallelAnimation   id="slideFadeIn" >
+		<Animation id="fastFadeIn"
+			duration=".5"
+			repeat="false"
+			easeFunction="linear" >
+			<FloatFieldInterpolator
+				id="testFloat"
+				key="[0.0, 1.0]"
+				keyValue="[0.0, 1.0]"
+				fieldToInterp="mainOverlay.opacity"   />
+		</Animation>
+		<Animation
+			id="fastSlideIn"
+			duration=".5"
+			repeat="false"
+			easeFunction="linear">
+			<Vector2DFieldInterpolator
+		        id="testVectorIn"
+		        key="[0.0, 1.0]"
+		        keyValue="[[0,0],[0,0]]"
+		        fieldToInterp="mainOverlay.translation"   />
+		</Animation>
+	</ParallelAnimation>
+	<ParallelAnimation   id="slideFadeOut" >
+		<Animation id="fastFadeout"
+			duration=".5"
+			repeat="false"
+			easeFunction="linear" >
+			<FloatFieldInterpolator
+				id="testFloat"
+				key="[0.0, 1.0]"
+				keyValue="[1.0, 0.0]"
+				fieldToInterp="mainOverlay.opacity"   />
+		</Animation>
+		<Animation
+			id="fastSlideout"
+			duration=".5"
+			repeat="false"
+			easeFunction="linear">
+			<Vector2DFieldInterpolator
+		        id="testVectorOut"
+		        key="[0.0, 1.0]"
+		        keyValue="[[0,0],[0,0]]"
+		        fieldToInterp="mainOverlay.translation"   />
+		</Animation>
+	</ParallelAnimation>
+	
+	
+	
+	
+	
+	
+	
+	<Animation id="videoInfoOverlayFadeIn"
+		duration="1"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[0.0, 1.0]"
+			fieldToInterp="videoInfoOverlay.opacity"   />
+	</Animation>
+	<Animation id="videoInfoOverlayFadeOut"
+		duration="1"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[1.0, 0.0]"
+			fieldToInterp="videoInfoOverlay.opacity"   />
+	</Animation>	
+	
+	<Animation id="slideFadeIn"
+		duration=".5"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			fieldToInterp="videoinfooverlay.opacity"
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[1.0, 0.0]"   />
+	</Animation>	
+	<Animation id="slideFadeOut"
+		duration=".5"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			fieldToInterp="videoInfoOverlay.opacity"
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[1.0, 0.0]"   />
+	</Animation>
+	
+	
+	
+	<Animation id="registrationScreenFadeOut"
+		duration="1"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<FloatFieldInterpolator
+			id="testFloat"
+			key="[0.0, 1.0]"
+			keyValue="[1.0, 0.0]"
+			fieldToInterp="videoinfooverlay.opacity"   />
+	</Animation>	
+
+
+	
+	<Animation id="voteOverlaySlideIn"
+		duration=".5"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<Vector2DFieldInterpolator
+			id="testVectorin"
+			key="[0.0, 1.0]"
+		        keyValue="[[500,0],[0,0]]"
+			fieldToInterp="voteOverlay.translation"   />
+	</Animation>	
+
+	
+	<Animation id="voteOverlaySlideOut"
+		duration=".5"
+		repeat="false"
+		optional="true"
+		easeFunction="linear" >
+		<Vector2DFieldInterpolator
+			key="[0.0, 1.0]"
+		     keyValue="[[0,0],[500,0]]"
+			fieldToInterp="voteOverlay.translation"   />
+	</Animation>	
+
+  </children>
+</component>

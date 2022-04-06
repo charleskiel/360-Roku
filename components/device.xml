@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+
+<component name="device" extends="Task">
+
+<interface>
+    <field id="AppVersion" type="string" value="1.00"/>
+    <field id="status" type="string" value="OK"/>
+    <field id="version" type="string" value=""/>
+    <field id="deviceID" type="string" value=""/>
+    <field id="Model" type="string" value=""/>
+    <field id="ModelDisplayName" type="string" value=""/>
+    <field id="DisplayType" type="string" value=""/>
+    <field id="DisplayMode" type="string" value=""/>
+    <field id="CountryCode" type="string" value=""/>
+    <field id="TimeZone" type="string" value=""/>
+    <field id="AudioOutputChannel" type="string" value=""/>
+    <field id="LinkStatus" type="string" value=""/>
+    <field id="ipaddress" type="string" value=""/>
+    <field id="major" type="int" value="0"/>
+    <field id="minor" type="int" value="0"/>
+    
+</interface>
+<script type="text/brightscript" uri="pkg:/components/device.brs" />
+
+</component>
