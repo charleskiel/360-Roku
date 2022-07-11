@@ -428,14 +428,13 @@ end sub
 function debugLabel() as string
 	t = ""
 	' if m.global.user.admin = 1 then 
-
 	if m.viewpost.playOK = true then 
 		if m.viewpost.content.count() = 1 then 
 			t = t + "Now         : " + m.viewpost.content[0].overlay + " | " + m.viewpost.content[0].mode + " ["+ m.showoverlays.tostr() + "] "
 			if m.viewpost.content[0].artist <> invalid then t = t + m.viewpost.content[0].artist + " - " + m.viewpost.content[0].title
 			t = t + chr(10) + chr(10)
 		else if m.viewpost.content.count() > 1 then 
-			t = t + "Now         : " + m.viewpost.content[1].overlay + " | " + m.viewpost.content[1].mode + " ["+ m.showoverlays.tostr() + "] "
+			t = t + "Now         : " + m.viewpost.content[1].overlay + " | "  + " ["+ m.showoverlays.tostr() + "] "
 			if m.viewpost.content[1].artist <> invalid then t = t + m.viewpost.content[1].artist + " - " + m.viewpost.content[1].title
 			t = t + chr(10)
 
@@ -553,7 +552,7 @@ function onKeyEvent(key as String, press as Boolean) as Boolean
 			if m.debugOverlay.visible then 
 				m.debugOverlay.visible = false 
 				? "Hiding Debug"
-				stop
+				'stop
 			else
 				 m.debugOverlay.visible = true
 				? "Showing Debug"

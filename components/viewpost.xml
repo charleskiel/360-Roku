@@ -12,7 +12,7 @@
 
 		<field id="streamPlayID" type="string" value="0" alwaysnotify="false"/>
 		<field id="playOK" type="bool" value="false" />
-		<field id="serverEpoch"  type="float" value="0" alwaysnotify="true"/>
+		<field id="serverEpoch"  type="longInteger" value="0" alwaysnotify="true"/>
 
 		<field id="postTime" type="int" value="0" alwaysnotify="true"/>
 		<field id="status" type="assocarray" value=""  alwaysnotify="true"/>

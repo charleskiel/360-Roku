@@ -15,58 +15,63 @@ sub init()
 end sub
 
 function executeTask() as void
-	if playerEpoch() > 10000000 then 
 
-		overlays = []
-		nextoverlays = []
-		posttimer = createobject("rotimespan")
-		posttimer.mark()
-		postBody = FormatJson({
-			"esn" : m.global.device.esn
-			"user" : m.global.user,
-			"playerEpoch" : playerEpoch(),
-			"screenMode" : m.top.screenMode,
-			"streamName" : m.top.streamName,
-			"playID" : m.top.playID,
-			"action" : "PLAY",
-			"position" : m.top.nowpos,
-			"bandwidth" : m.top.totalBandwidth
-		})
-
-		response = post(m.global.config.viewpost, postBody)
-		m.top.posttime = posttimer.TotalMilliseconds()
-		j = ParseJson(response)
-		if j <> invalid and j.count() > 0 then 
-			m.top.response = response
-			'? j
-			m.top.playOK = true
-			content = []
-			for each item in j
-				? item
-				m.top.serverEpoch = item["serverEpoch"]
-				m.top.offset = item["offset"]
-				content.push({
-					artist : item["alphaArtist"],
-					title : item["title"],
-					contentEndEpoch : item["contentEndEpoch"],
-					contentEpoch : item["contentEpoch"],
-					TRT : item["trt"],
-					titleIn : item["titlein"],
-					titleOut : item["titleout"],
-					overlay : item["overlay"],
-					mode : item["mode"]
-				})
-			end for
-			m.top.content = content
-			? m.top.content[m.top.content.count() -1]
+	overlays = []
+	nextoverlays = []
+	posttimer = createobject("rotimespan")
+	posttimer.mark()
+	postBody = FormatJson({
+		"esn" : m.global.device.esn
+		"user" : m.global.user,
+		"playerEpoch" : playerEpoch() ,
+		"screenMode" : m.top.screenMode,
+		"streamName" : m.top.streamName,
+		"channelNumber" : 1,
+		"playID" : m.top.playID,
+		"action" : "PLAY",
+		"position" : m.top.nowpos,
+		"bandwidth" : m.top.totalBandwidth,
+		"segmentEpoch" : m.top.segmentEpoch,
+		"segmentTimer" : m.segmentTimer.TotalMilliseconds(),
+		"offset" : m.top.offset
+	})
+	'? postBody
+	response = post(m.global.config.viewpost, postBody)
+	m.top.posttime = posttimer.TotalMilliseconds()
+	j = ParseJson(response)
+	if j <> invalid and j.count() > 0 then 
+		m.top.response = response
+		' ? j["nowPlaying"]
+		m.top.playOK = true
+		content = []
+		m.top.serverEpoch = ParseJson(j["serverEpoch"].tostr())
+		m.top.offset = j["channel"]["offset"] * 1000
+		
+		for each item in j["nowPlaying"]
+			' ? item
+			content.push({
+				artist : item["alphaArtist"],
+				title : item["title"],
+				contentEndEpoch : item["contentEndEpoch"],
+				contentEpoch : item["contentEpoch"],
+				TRT : item["trt"],
+				titleIn : item["titlein"],
+				titleOut : item["titleout"],
+				overlay : item["overlay"],
+				mode : item["mode"]
+			})
+		end for
+		m.top.content = content
+		if m.top.content.count() > 0
 			m.top.mode = m.top.content[m.top.content.count() -1].mode 
 			m.top.overlay = m.top.content[m.top.content.count() -1].overlay 
-		else
-			m.top.playOK = false
 		end if
 
-		m.top.control = "stop"
+	else
+		m.top.playOK = false
 	end if
+
+	m.top.control = "stop"
 
 end function
 
@@ -80,9 +85,11 @@ function viewTimer() as longinteger
 end function 
 
 function playerEpoch() as longinteger
-	if m.top.segmentEpoch <> invalid then
-		return m.top.segmentEpoch + m.segmentTimer.TotalMilliseconds() + (m.top.offset * 1000)
+	if m.top.serverEpoch <> invalid then
+		return m.top.serverEpoch + ( 5000)
 	else 
+		
+STOP
 		return 0
 	end if
 
@@ -103,11 +110,11 @@ function setStreamingSegment(data)
 	m.segmentTimer.mark()
 
 	if msg <> invalid then 
-		? "StremingSegment = >  " + ParseJson(mid(msg.segurl, Len("https://360tv.net/stream/east/")+1,13 )).tostr()
-		? "	 StremingURL = > " + mid(msg.segurl, Len("https://360tv.net/stream/east/")+1,13 )
-		? "   Segment start : " + m.top.segmentStartTime.toStr()
-		? "	 StremingURL = > " + msg.segURL
-		? "	 SegmentEpoch= > " + m.top.segmentEpoch.tostr()
+		' ? "StremingSegment = >  " + ParseJson(mid(msg.segurl, Len("https://360tv.net/stream/east/")+1,13 )).tostr()
+		' ? "	 StremingURL = > " + mid(msg.segurl, Len("https://360tv.net/stream/east/")+1,13 )
+		' ? "   Segment start : " + m.top.segmentStartTime.toStr()
+		' ? "	 StremingURL = > " + msg.segURL
+		' ? "	 SegmentEpoch= > " + m.top.segmentEpoch.tostr()
 		m.top.segmentStartTime = msg.segStartTime
 		m.top.segmentURL = msg.segURL
 		m.top.segmentSequence = msg.segSequence

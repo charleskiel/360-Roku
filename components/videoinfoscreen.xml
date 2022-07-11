@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<component name="VideoInfoScreen" extends="Task">
+	<script type="text/brightscript" uri="pkg:/components/videoinfoscreen.brs" />
+	<script type="text/brightscript" uri="pkg:/components/getData.brs" />
+
+	<interface>
+		<field id="display" type="string" value="" alwaysnotify="true"/>
+		<field id="epoch" type="int" value="0" />
+		<field id="streamname" type="string" value="" />
+		<field id="averagerating" type="int" value="0" />
+		<field id="userrating" type="int" value="-1" />
+		<field id="rating" type="string" value="TV-PG" />
+		<field id="enable" type="bool" value="True" />
+		<field id="id" type="string" value="" />
+		<field id="artist" type="string" value="" />
+		<field id="title" type="string" value="" />
+		<field id="contenttype" type="string" value="" />
+		<field id="pcrating" type="string" value="" />
+		<field id="avatar" type="string" value="" />
+		<field id="attended" type="bool" value="false" />
+			
+		<field id="content" type="array" value="[]" />
+		<function name="post" />
+	</interface>
+
+</component>
